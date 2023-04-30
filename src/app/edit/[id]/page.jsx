@@ -1,9 +1,3 @@
-import React from 'react'
+import NewFormGateway from '../../new/page'
 
-function page({ params }) {
-  return (
-    <div>Editando { params.id }</div>
-  )
-}
-
-export default page
+export default NewFormGateway

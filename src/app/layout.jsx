@@ -1,3 +1,4 @@
+import { Navbar } from "@/components/Navbar";
 import { GatewayProvider } from "../context/GatewaysContext";
 import "./globals.css";
 
@@ -10,7 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <GatewayProvider>{children}</GatewayProvider>
+        <GatewayProvider>
+          <Navbar/>
+          {children}
+        </GatewayProvider>
       </body>
     </html>
   );

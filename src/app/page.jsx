@@ -4,7 +4,6 @@ import { GatewayCard } from "../components/GatewayCard";
 
 function Page() {
   const { gateways } = useGateways();
-  console.log(gateways);
   return (
     <div>
       {gateways.map((gateway) => (

@@ -1,6 +1,7 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 import { v4 as uuid } from "uuid";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const GatewaysContext = createContext();
 
@@ -11,35 +12,35 @@ export const useGateways = () => {
 };
 
 export const GatewayProvider = ({ children }) => {
-  const [gateways, setGateways] = useState([
-    {
-      id: 1,
-      title: "Gateway 1",
-      description: "This is the gateway 1.",
-    },
-    {
-      id: 2,
-      title: "Gateway 2",
-      description: "This is the gateway 2.",
-    },
-    {
-      id: 3,
-      title: "Gateway 3",
-      description: "This is the gateway 3.",
-    },
-  ]);
-  const createGatewy = (title, description) =>
+  const [gateways, setGateways] = useLocalStorage("gateways", []);
+
+  // Create Gateway
+  const createGateway = (title, description) =>
     setGateways([
       ...gateways,
       {
         title,
         description,
-        id: uuid()
+        id: uuid(),
       },
     ]);
 
+  // Delete Gateway
+  const deleteGateway = (id) =>
+    setGateways([...gateways.filter((gateway) => gateway.id !== id)]);
+
+  // Update Gateway
+  const updateGateway = (id, newData) =>
+    setGateways([
+      ...gateways.map((gateway) =>
+        gateway.id === id ? { ...gateway, ...newData } : gateway
+      ),
+    ]);
+
   return (
-    <GatewaysContext.Provider value={{ gateways, createGatewy }}>
+    <GatewaysContext.Provider
+      value={{ gateways, createGateway, deleteGateway, updateGateway }}
+    >
       {children}
     </GatewaysContext.Provider>
   );

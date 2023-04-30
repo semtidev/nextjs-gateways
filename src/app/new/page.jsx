@@ -1,11 +1,14 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useGateways } from "../../context/GatewaysContext";
 import { useRouter } from "next/navigation";
 
-function Page() {
-  const [gateway, setGateway] = useState();
-  const { createGatewy } = useGateways();
+function Page({ params }) {
+  const [gateway, setGateway] = useState({
+    title: "",
+    description: "",
+  });
+  const { gateways, createGateway, updateGateway } = useGateways();
   const router = useRouter();
 
   const handleChange = (e) =>
@@ -13,9 +16,24 @@ function Page() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createGatewy(gateway.title, gateway.description);
+    if (params.id) {
+      updateGateway(params.id, gateway);
+    } else {
+      createGateway(gateway.title, gateway.description);
+    }
     router.push("/");
   };
+
+  useEffect(() => {
+    if (params.id) {
+      const gatewayFound = gateways.find((gateway) => gateway.id === params.id);
+      if (gatewayFound)
+        setGateway({
+          title: gatewayFound.title,
+          description: gatewayFound.description,
+        });
+    }
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -23,12 +41,14 @@ function Page() {
         name="title"
         type="text"
         placeholder="Write a title"
+        value={gateway.title}
         onChange={handleChange}
       />
       <textarea
         name="description"
         rows="10"
         placeholder="Write a description"
+        value={gateway.description}
         onChange={handleChange}
       ></textarea>
       <button>Save</button>
