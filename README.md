@@ -1,5 +1,4 @@
 Gateways App is an example project, developed in the [Next.js](https://nextjs.org/) framework, which provides a solution to the evaluation exercise for the candidacy of the [MusalaSoft](https://www.musala.com/) company.
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Software Requirements
 
