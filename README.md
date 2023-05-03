@@ -3,7 +3,9 @@ Gateways App is an example project, developed in the [Next.js](https://nextjs.or
 ## Software Requirements
 
 Language : JavaScript
+
 Framework: Next.js (NODE, REACT)
+
 Database : Local Storage
 
 ## Some Important Libraries Used
