@@ -5,10 +5,12 @@ import { GatewayCard } from "../components/GatewayCard";
 function Page() {
   const { gateways } = useGateways();
   return (
-    <div>
-      {gateways.map((gateway) => (
-        <GatewayCard gateway={gateway} key={gateway.id} />
-      ))}
+    <div className="flex justify-center">
+      <div className="w-7/12">
+        {gateways.map((gateway) => (
+          <GatewayCard gateway={gateway} key={gateway.id} />
+        ))}
+      </div>
     </div>
   );
 }
