@@ -1,4 +1,4 @@
-Gateways App is an example project, developed in the [Next.js](https://nextjs.org/) framework, which provides a solution to the evaluation exercise for the candidacy of the [MusalaSoft](https://www.musala.com/) company.
+Gateways App is a practical exercise, developed in the Next.js framework, that provides a solution to any need of this type in a company.
 
 ## Software Requirements
 
