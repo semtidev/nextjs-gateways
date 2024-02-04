@@ -1,4 +1,4 @@
-Gateways App is a practical exercise, developed in the Next.js framework, that provides a solution to any need of this type in a company.
+Gateways App is a practical exercise, developed in the Next.js framework, that provides a solution to any need of this type within a network administration project in a company.
 
 ## Software Requirements
 
